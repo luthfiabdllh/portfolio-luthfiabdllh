@@ -5,6 +5,7 @@ import darkAnimation from "@/public/icons/chevron_dark.json";
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes"; // Perbaiki import
 import Lottie from "lottie-react";
+import Link from "next/link";
 
 export default function ScrollIcon() {
   const { resolvedTheme } = useTheme(); // Gunakan resolvedTheme untuk lebih reliable
@@ -22,12 +23,12 @@ export default function ScrollIcon() {
     resolvedTheme === "dark" ? lightAnimation : darkAnimation;
 
   return (
-    <div className="w-8 h-8 rotate-90 border-1 rounded">
+    <Link href="/" className="w-8 h-8 rotate-90 border-1 rounded">
       <Lottie 
         animationData={animationData} 
         loop 
         autoplay
       />
-    </div>
+    </Link>
   );
 }
