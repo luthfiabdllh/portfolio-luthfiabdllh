@@ -1,3 +1,4 @@
+import { Download } from "lucide-react";
 import { ShimmerButton } from "../magicui/shimmer-button";
 
 export default function HomePage() {
@@ -38,19 +39,21 @@ export default function HomePage() {
                 </p>
 
                 <ShimmerButton
-                  className="w-full sm:w-auto shadow-2xl bg-background hover:bg-background/80 transition-all duration-300 hover:scale-105 active:scale-95 min-h-[44px] sm:min-h-[48px] lg:min-h-[52px] px-6 sm:px-8 lg:px-10 py-3 sm:py-4"
+                  className="w-full sm:w-auto shadow-2xl bg-background hover:bg-background/80 transition-all duration-300 hover:scale-105 active:scale-95 min-h-[44px] sm:min-h-[48px] lg:min-h-[52px] px-6 sm:px-8 lg:px-10 py-3 sm:py-4 text-sm sm:text-base lg:text-lg font-medium leading-none tracking-tight flex items-center text-white zjustify-center gap-2"
                   shimmerDuration="5s"
                   shimmerSize="0.1em"
                   background="var(--background)"
                 >
-                  <span className="text-sm sm:text-base lg:text-lg font-medium leading-none tracking-tight text-white">
-                    Get In Touch
-                  </span>
+                    <Download />
+                    Resume
                 </ShimmerButton>
               </div>
             </div>
           </div>
         </div>
+      </div>
+      <div className="h-screen bg-gradient-to-b from-card to-background relative z-10 flex items-center justify-center p-4 sm:p-6 md:p-8 lg:px-12 lg:py-40">
+        
       </div>
 
 

@@ -203,6 +203,29 @@
 @layer base {
   body {
     @apply bg-background text-foreground;
-    /* Font sudah di-handle oleh className di layout */
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer utilities {
+  @keyframes background-fade {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .gradient-background {
+    background: radial-gradient(circle at 30% 30%, #3f1fff, #000c66, #011a32);
+    background-size: 400% 400%;
+    animation: background-fade 20s ease-in-out infinite;
   }
 }

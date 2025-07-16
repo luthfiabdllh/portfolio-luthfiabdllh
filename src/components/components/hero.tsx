@@ -24,7 +24,7 @@ export default function Hero() {
 
     
     return (
-        <div className="relative w-full h-screen bg-background p-3 sm:p-6" style={{ overflow: 'visible' }}>
+        <div className="sticky top-0 z-10 flex items-center justify-center w-full h-screen bg-background p-3 sm:p-6" style={{ overflow: 'visible' }}>
             <Waves
                 lineColor={lineColor}
                 waveSpeedX={0.02}
