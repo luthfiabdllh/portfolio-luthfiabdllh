@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 type ShaderParams = {
   patternScale: number;
@@ -392,15 +392,15 @@ export default function MetallicPaint({
   const totalAnimationTime = useRef(0);
   const lastRenderTime = useRef(0);
 
-  function updateUniforms() {
-    if (!gl || !uniforms) return;
+  const updateUniforms = useCallback(() => {
+    if (!gl || !uniforms || Object.keys(uniforms).length === 0) return;
     gl.uniform1f(uniforms.u_edge, params.edge);
     gl.uniform1f(uniforms.u_patternBlur, params.patternBlur);
     gl.uniform1f(uniforms.u_time, 0);
     gl.uniform1f(uniforms.u_patternScale, params.patternScale);
     gl.uniform1f(uniforms.u_refraction, params.refraction);
     gl.uniform1f(uniforms.u_liquid, params.liquid);
-  }
+  }, [gl, uniforms, params]);
 
   useEffect(() => {
     function initShader() {
@@ -466,10 +466,10 @@ export default function MetallicPaint({
       }
 
       function getUniforms(program: WebGLProgram, gl: WebGL2RenderingContext) {
-        let uniforms: Record<string, WebGLUniformLocation> = {};
-        let uniformCount = gl.getProgramParameter(program, gl.ACTIVE_UNIFORMS);
+        const uniforms: Record<string, WebGLUniformLocation> = {};
+        const uniformCount = gl.getProgramParameter(program, gl.ACTIVE_UNIFORMS);
         for (let i = 0; i < uniformCount; i++) {
-          let uniformName = gl.getActiveUniform(program, i)?.name;
+          const uniformName = gl.getActiveUniform(program, i)?.name;
           if (!uniformName) continue;
           uniforms[uniformName] = gl.getUniformLocation(
             program,
@@ -502,12 +502,11 @@ export default function MetallicPaint({
   }, []);
 
   useEffect(() => {
-    if (!gl || !uniforms) return;
     updateUniforms();
-  }, [gl, params, uniforms]);
+  }, [updateUniforms]);
 
   useEffect(() => {
-    if (!gl || !uniforms) return;
+    if (!gl || !uniforms || Object.keys(uniforms).length === 0) return;
 
     let renderId: number;
 
@@ -527,7 +526,7 @@ export default function MetallicPaint({
     return () => {
       cancelAnimationFrame(renderId);
     };
-  }, [gl, params.speed]);
+  }, [gl, uniforms, params.speed]);
 
   useEffect(() => {
     const canvasEl = canvasRef.current;
