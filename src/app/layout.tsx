@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { helveticaNeue } from "@/lib/fonts";
+import { helveticaNeue, carlBrown } from "@/lib/fonts";
 import "./globals.css";
 import { ThemeProvider } from "@/components/components/theme-provider";
 
@@ -14,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={helveticaNeue.variable} suppressHydrationWarning>
+    <html lang="en" className={`${helveticaNeue.variable} ${carlBrown.variable}`}  suppressHydrationWarning>
       <body className={helveticaNeue.className}>
           <ThemeProvider
             attribute="class"

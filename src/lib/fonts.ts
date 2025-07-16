@@ -49,6 +49,20 @@ export const helveticaNeue = localFont({
   fallback: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
 })
 
+export const carlBrown = localFont({
+  src: [
+    {
+      path: '../assets/fonts/CarlBrown.woff2',
+      weight: '300',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-carl-brown',
+  display: 'swap',
+  preload: true,
+  fallback: ['Georgia', 'Times New Roman', 'serif'], 
+})
+
 export const fontClasses = {
   thin: 'font-thin',
   extralight: 'font-extralight', 

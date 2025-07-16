@@ -24,7 +24,7 @@ export default function Hero() {
 
     
     return (
-        <div className="relative w-full h-screen bg-background p-3 sm:p-5" style={{ overflow: 'visible' }}>
+        <div className="relative w-full h-screen bg-background p-3 sm:p-6" style={{ overflow: 'visible' }}>
             <Waves
                 lineColor={lineColor}
                 waveSpeedX={0.02}
@@ -107,7 +107,7 @@ export default function Hero() {
             />
 
             {/* Bottom section - responsive */}
-            <div className="absolute bottom-0 left-0 right-0 z-20 flex items-end justify-between p-3 sm:p-5">
+            <div className="absolute bottom-0 left-0 right-0 z-20 flex items-end justify-between p-3 sm:p-6">
                 <div className="flex items-center gap-1 sm:gap-2">
                     <ScrollIcon />
                     <p className="text-left text-xs sm:text-sm font-light">
@@ -120,7 +120,7 @@ export default function Hero() {
             </div>
 
             {/* Header - responsive navigation */}
-            <div className="absolute top-0 left-0 right-0 z-10 flex justify-between items-center p-3 sm:p-5">
+            <div className="absolute top-0 left-0 right-0 z-10 flex justify-between items-center p-3 sm:p-6">
                 <LogoMetallic/>
                 
                 {/* Desktop Navigation */}
