@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { helveticaNeue, carlBrown } from "@/lib/fonts";
 import "./globals.css";
 import { ThemeProvider } from "@/components/components/theme-provider";
+import { FloatingNavbar } from "@/components/components/FloatingNavbar";
 
 export const metadata: Metadata = {
   title: "Portfolio",
@@ -22,6 +23,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+            <FloatingNavbar />
             {children}
           </ThemeProvider>
       </body>

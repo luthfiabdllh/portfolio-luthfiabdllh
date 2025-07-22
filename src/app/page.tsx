@@ -1,11 +1,13 @@
-import Hero from "@/components/components/hero";
-import HomePage from "@/components/components/Homepage";
+import HeroSection from "@/components/components/HeroSection";
+import IntroSection from "@/components/components/IntroSection";
 
 export default function Home() {
   return (
     <>
-      <Hero />
-      <HomePage/>
+      <HeroSection />
+      <main className="rounded-t-3xl relative overflow-hidden ">
+        <IntroSection />
+      </main>
     </>
   );
 }
