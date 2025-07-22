@@ -8,7 +8,7 @@ import LogoMetallic from "../ui/LogoMetallic";
 import { useTheme } from "next-themes";
 import { useEffect, useMemo, useState } from "react";
 
-export default function Hero() {
+export default function HeroSection() {
     const { resolvedTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
 
