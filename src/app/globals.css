@@ -136,7 +136,7 @@
   --popover-foreground: oklch(0.95 0.03 210); /* Glowing White-Blue */
   --primary: oklch(0.75 0.17 215); /* Electric Blue */
   --primary-foreground: oklch(0.18 0.02 250); /* Abyss Black text on blue */
-  --secondary: oklch(0.21 0.02 250); /* Dark Card (Surface/Subtle) */
+  --secondary: oklch(0.709 0 0); /* Dark Card (Surface/Subtle) */
   --secondary-foreground: oklch(0.95 0.03 210); /* Glowing White-Blue */
   --muted: oklch(0.21 0.02 250); /* Dark Card */
   --muted-foreground: oklch(0.85 0.09 215); /* Light Blue */

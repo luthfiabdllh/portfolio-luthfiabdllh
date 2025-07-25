@@ -92,16 +92,21 @@ export const defaultNavItems: NavItem[] = [
   {
     name: "Services",
     link: "#services",
+    icon: <Settings size={18} />,
+  },
+  {
+    name: "Projects",
+    link: "#projects",
+    icon: <Briefcase size={18} />,
+  },
+  {
+    name: "Sertification",
+    link: "#services",
     icon: <Briefcase size={18} />,
   },
   {
     name: "Contact",
     link: "#contact",
     icon: <Mail size={18} />,
-  },
-  {
-    name: "Settings",
-    link: "#settings",
-    icon: <Settings size={18} />,
   },
 ]
