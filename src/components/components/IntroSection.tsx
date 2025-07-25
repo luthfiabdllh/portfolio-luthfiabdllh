@@ -1,13 +1,14 @@
 import { Download } from "lucide-react";
 import { ShimmerButton } from "../magicui/shimmer-button";
+import CountUp from "../ui/CountUp/CountUp";
 
 export default function IntroSection() {
   return (
-    <div className="bg-gradient-to-b from-card to-background relative z-10 h-full flex items-center justify-center p-4 sm:p-6 md:p-8 lg:px-12 lg:py-40">
-      <div className="w-full max-w-7xl mx-auto">
+    <div className="bg-[linear-gradient(to_bottom,oklch(0.1511_0.0302_269.18)_0%,oklch(0.1511_0.028_269.18)_20%,oklch(0.1511_0.026_269.18)_40%,oklch(0.1511_0.024_269.18)_60%,oklch(0.1511_0.022_269.18)_80%,oklch(0.1511_0.0202_269.18)_100%)] relative z-10 h-full flex items-center justify-center p-4 sm:p-6 md:p-8 lg:px-12 lg:py-28">
+      <div className="w-full max-w-7xl mx-auto space-y-32">
         <div className="flex flex-col md:flex-row gap-8 sm:gap-12 md:gap-16 lg:gap-20 xl:gap-24 2xl:gap-27 items-center md:items-center">
           <div className="text-center md:text-right flex-shrink-0">
-            <h1 className="font-thin tracking-tight leading-[0.85] text-white">
+            <h1 className="font-thin tracking-tight leading-[0.85]">
               <span className="block text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl">
                 HELL<span className="font-carl-brown">o</span>
               </span>
@@ -17,7 +18,7 @@ export default function IntroSection() {
             </h1>
           </div>
           <div className="text-center md:text-left w-full lg:flex-1">
-            <div className="max-w-none text-white space-y-6 sm:space-y-8">
+            <div className="max-w-none space-y-6 sm:space-y-8">
               <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed">
                 <strong className="font-semibold">Ahmad Luthfi Abdillah</strong>{" "}
                 <span className="font-light text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl opacity-80">
@@ -35,7 +36,7 @@ export default function IntroSection() {
               </p>
 
               <ShimmerButton
-                className="w-full sm:w-auto shadow-2xl bg-background hover:bg-background/80 transition-all duration-300 hover:scale-105 active:scale-95 min-h-[44px] sm:min-h-[48px] lg:min-h-[52px] px-6 sm:px-8 lg:px-10 py-3 sm:py-4 text-sm sm:text-base lg:text-lg font-medium leading-none tracking-tight flex items-center text-white zjustify-center gap-2"
+                className="w-full sm:w-auto shadow-2xl bg-background hover:bg-background/80 transition-all duration-300 hover:scale-105 active:scale-95 min-h-[44px] sm:min-h-[48px] lg:min-h-[52px] px-6 sm:px-8 lg:px-10 py-3 sm:py-4 text-sm sm:text-base lg:text-lg font-medium leading-none tracking-tight flex items-center   zjustify-center gap-2"
                 shimmerDuration="5s"
                 shimmerSize="0.1em"
                 background="var(--background)"
@@ -45,6 +46,34 @@ export default function IntroSection() {
               </ShimmerButton>
             </div>
           </div>
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-10 lg:gap-12">
+          {[
+            { to: 2, label: "Years of Experience" },
+            { to: 5, label: "Projects Completed" },
+            { to: 3, label: "Sertification" },
+            { to: 1500, label: "Hour of Coding" },
+          ].map((item, idx) => (
+            <div
+              key={idx}
+              className="flex flex-col items-center justify-center py-4"
+            >
+              <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold">
+                <CountUp
+                  from={0}
+                  to={item.to}
+                  separator="."
+                  direction="up"
+                  duration={1}
+                  className="count-up-text"
+                />
+                +
+              </span>
+              <p className="text-secondary text-base sm:text-lg md:text-xl text-center">
+                {item.label}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </div>

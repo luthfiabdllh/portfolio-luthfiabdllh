@@ -126,10 +126,10 @@ export default function HeroSection() {
                 {/* Desktop Navigation */}
                 <div className="hidden lg:flex gap-20 xl:gap-40 text-base xl:text-lg text-right">
                     <a className="font-light leading-tight hover:font-normal transition-all cursor-pointer">
-                        My<br />Services
+                        My<br />Works
                     </a>
                     <a className="font-light leading-tight hover:font-normal transition-all cursor-pointer">
-                        My<br />Works
+                        My<br />Experiences
                     </a>
                     <a className="font-light leading-tight hover:font-normal transition-all cursor-pointer">
                         About<br />Me
