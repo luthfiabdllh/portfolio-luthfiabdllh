@@ -69,7 +69,8 @@ void main(){
     float scanline_val=sin(gl_FragCoord.y*uScanFreq)*0.5+0.5;
     col.rgb*=1.-(scanline_val*scanline_val)*uScan;
     col.rgb+=(rand(gl_FragCoord.xy+uTime)-0.5)*uNoise;
-    gl_FragColor=vec4(clamp(col.rgb,0.0,1.0),1.0);
+    float alpha = length(col.rgb); // bisa juga 0.0 atau threshold lain
+    gl_FragColor = vec4(clamp(col.rgb, 0.0, 1.0), alpha);
 }
 `;
 
@@ -84,13 +85,13 @@ type Props = {
 };
 
 export default function DarkVeil({
-  hueShift = 0,
-  noiseIntensity = 0,
+  hueShift = 13,
+  noiseIntensity = 0.01,
   scanlineIntensity = 0,
-  speed = 0.5,
-  scanlineFrequency = 0,
-  warpAmount = 0,
-  resolutionScale = 1,
+  speed = 1.5,
+  scanlineFrequency = 1.5,
+  warpAmount = 1,
+  resolutionScale = 1.3,
 }: Props) {
   const ref = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
@@ -100,9 +101,14 @@ export default function DarkVeil({
     const renderer = new Renderer({
       dpr: Math.min(window.devicePixelRatio, 2),
       canvas,
+      alpha: true, // penting: WebGL context dengan alpha channel
+      premultipliedAlpha: false,
     });
 
     const gl = renderer.gl;
+
+    gl.clearColor(0, 0, 0, 0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
     const geometry = new Triangle(gl);
 
     const program = new Program(gl, {
@@ -161,5 +167,5 @@ export default function DarkVeil({
     warpAmount,
     resolutionScale,
   ]);
-  return <canvas ref={ref} className="w-full h-full block" />;
+  return <canvas ref={ref} className="w-full absolute inset-0" />;
 }
