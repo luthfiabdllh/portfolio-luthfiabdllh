@@ -1,3 +1,4 @@
+import CtaSection from "@/components/components/CtaSection";
 import HeroSection from "@/components/components/HeroSection";
 import IntroSection from "@/components/components/IntroSection";
 import ProjectSection from "@/components/components/ProjectSection";
@@ -17,8 +18,8 @@ export default function Home() {
         </AnimatedBorder>
         <ServicesSection />
         <ServicesGrid/>
-        
         <ProjectSection />
+        <CtaSection />
       </main>
     </>
   );
