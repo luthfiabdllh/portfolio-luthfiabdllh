@@ -18,9 +18,12 @@ export default function AnimatedBorder({
     once: true, 
     margin: "-100px" 
   });
-  const topVerticalHeight = children ? "12rem" : "0rem";
+
+  // Calculate total height for top vertical line
+  const topVerticalHeight = children ? "12rem" : "0rem"; // 4rem (bottom) + content space + 4rem (final) = ~12rem
+
   return (
-    <div ref={ref} className={`relative w-full ${className}`}>
+    <div ref={ref} className={`relative w-full py-15 ${className}`}>
       {/* Top Vertical Line */}
       <motion.div
         className="w-px bg-border mx-auto"
@@ -113,7 +116,7 @@ export default function AnimatedBorder({
       {/* Content */}
       {children && (
         <motion.div
-          className="text-center py-2"
+          className="text-center px-4 py-2"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{
