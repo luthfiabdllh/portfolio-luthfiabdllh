@@ -17,11 +17,7 @@ export default function Home() {
         </AnimatedBorder>
         <ServicesSection />
         <ServicesGrid/>
-        <AnimatedBorder duration={2} className="max-w-7xl mx-auto">
-          I don’t just write code — I build experiences. What I do is grounded
-          in curiosity, shaped by purpose, and refined through craft. From
-          design thinking to deployment, here’s how I help ideas become reality.
-        </AnimatedBorder>
+        
         <ProjectSection />
       </main>
     </>

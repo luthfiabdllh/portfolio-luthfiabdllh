@@ -1,11 +1,20 @@
 "use client";
-import { motion } from "framer-motion";
+import AnimatedBorder from "../ui/border";
+import DarkVeil from "../ui/DarkVeil/DarkVeil";
 import { HoverImageLinks } from "./HoverImage";
 
 export default function ProjectSection() {
   return (
     <div className="relative w-full mx-auto space-y-32 bg-background py-32 overflow-hidden">
-      
+      <DarkVeil
+      />
+            <DarkVeil
+      />
+      <AnimatedBorder duration={2} className="max-w-7xl mx-auto">
+          I don’t just write code — I build experiences. What I do is grounded
+          in curiosity, shaped by purpose, and refined through craft. From
+          design thinking to deployment, here’s how I help ideas become reality.
+        </AnimatedBorder>
       {/* Content */}
       <div className="relative z-10">
         <div className="relative w-full max-w-5xl mx-auto px-4">
