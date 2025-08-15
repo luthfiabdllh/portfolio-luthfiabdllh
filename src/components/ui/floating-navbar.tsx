@@ -25,9 +25,15 @@ export function FloatingNav({ navItems, className = "" }: FloatingNavProps) {
     const handleScroll = () => {
       const currentScrollY = window.scrollY
 
-      if (currentScrollY > 100) {
+      if (currentScrollY > 100 && currentScrollY < document.body.scrollHeight - 100) {
         setVisible(true)
-      } else {
+      }
+      else {
+        setVisible(false)
+      }
+
+      // Hide when near the bottom of the page
+      if (currentScrollY >= document.body.scrollHeight - window.innerHeight - 100) {
         setVisible(false)
       }
 

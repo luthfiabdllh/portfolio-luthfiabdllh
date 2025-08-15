@@ -2,7 +2,7 @@ import { ShimmerButton } from "../magicui/shimmer-button";
 
 export default function CtaSection() {
   return (
-    <section className="justify-center items-center flex flex-col w-full mx-auto bg-background py-40 text-center space-y-12">
+    <section className="justify-center items-center flex flex-col w-full mx-auto bg-background min-h-screen text-center space-y-12">
       <h6>HAVE A PROJECT IN MIND?</h6>
       <h3 className=" text-9xl font-thin">LET&apos;S MAKE <br /><span className="font-carl-brown">g</span>REAT THIN<span className="font-carl-brown">g</span>S <span className="font-dancing-script">Together</span></h3>
     <ShimmerButton
