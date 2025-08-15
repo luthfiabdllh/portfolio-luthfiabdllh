@@ -6,6 +6,7 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const [currentText, setCurrentText] = useState(0);
+  const [mounted, setMounted] = useState(false);
 
   const loadingTexts = [
     "Crafting Experience",
@@ -14,7 +15,37 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
     "Almost Ready"
   ];
 
+  // Fixed positions untuk background dots - tidak menggunakan Math.random()
+  const backgroundDots = [
+    { left: 10, top: 20 },
+    { left: 80, top: 15 },
+    { left: 20, top: 70 },
+    { left: 90, top: 80 },
+    { left: 60, top: 10 },
+    { left: 30, top: 90 },
+    { left: 70, top: 60 },
+    { left: 15, top: 45 },
+    { left: 85, top: 35 },
+    { left: 45, top: 25 },
+    { left: 25, top: 55 },
+    { left: 75, top: 75 },
+    { left: 50, top: 5 },
+    { left: 5, top: 85 },
+    { left: 95, top: 50 },
+    { left: 35, top: 40 },
+    { left: 65, top: 85 },
+    { left: 40, top: 65 },
+    { left: 55, top: 30 },
+    { left: 12, top: 12 }
+  ];
+
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+
     // Progress animation
     const progressInterval = setInterval(() => {
       setProgress(prev => {
@@ -22,7 +53,8 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
           clearInterval(progressInterval);
           return 100;
         }
-        return prev + Math.random() * 8 + 2;
+        // Gunakan nilai increment yang lebih konsisten
+        return prev + (Math.sin(Date.now() * 0.01) + 1) * 5 + 2;
       });
     }, 150);
 
@@ -44,7 +76,12 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
       clearInterval(textInterval);
       clearTimeout(finishTimer);
     };
-  }, []);
+  }, [mounted, loadingTexts.length]);
+
+  // Prevent hydration mismatch
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <>
@@ -61,16 +98,16 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
             transition={{ duration: 1, ease: "easeInOut" }}
             className="fixed inset-0 z-50 bg-background flex items-center justify-center overflow-hidden"
           >
-            {/* Background Pattern */}
+            {/* Background Pattern - Fixed positions */}
             <div className="absolute inset-0 opacity-5">
               <div className="absolute inset-0 bg-gradient-to-br from-foreground/10 via-transparent to-foreground/5" />
-              {Array.from({ length: 20 }).map((_, i) => (
+              {backgroundDots.map((dot, i) => (
                 <motion.div
                   key={i}
                   className="absolute w-1 h-1 bg-foreground/20 rounded-full"
                   style={{
-                    left: `${Math.random() * 100}%`,
-                    top: `${Math.random() * 100}%`,
+                    left: `${dot.left}%`,
+                    top: `${dot.top}%`,
                   }}
                   animate={{
                     opacity: [0, 1, 0],
@@ -79,7 +116,7 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
                   transition={{
                     duration: 2,
                     repeat: Infinity,
-                    delay: Math.random() * 2,
+                    delay: i * 0.1, // Fixed delay based on index
                   }}
                 />
               ))}
@@ -94,20 +131,17 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
                 className="space-y-4"
               >
                 <motion.h1 
-                    className="text-6xl md:text-8xl lg:text-9xl font-thin tracking-wider"
-                    animate={{ 
-                        textShadow: [
-                            "0 0 0px rgba(255,255,255,0)",
-                            "0 0 20px rgba(255,255,255,0.1)",
-                            "0 0 0px rgba(255,255,255,0)"
-                        ]
-                    }}
-                    transition={{ duration: 2, repeat: Infinity }}
+                  className="text-6xl md:text-8xl lg:text-9xl font-thin tracking-wider"
+                  animate={{ 
+                    textShadow: [
+                      "0 0 0px rgba(255,255,255,0)",
+                      "0 0 20px rgba(255,255,255,0.1)",
+                      "0 0 0px rgba(255,255,255,0)"
+                    ]
+                  }}
+                  transition={{ duration: 2, repeat: Infinity }}
                 >
-                    L
-                    <span className="font-carl-brown">o</span>
-                    ADIN
-                    <span className="font-carl-brown">g</span>
+                  L<span className="font-carl-brown">o</span>ADIN<span className="font-carl-brown">g</span>
                 </motion.h1>
                 
                 <motion.div
@@ -173,7 +207,7 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
                       animate={{ pathLength: progress / 100 }}
                       transition={{ duration: 0.3, ease: "easeOut" }}
                       style={{
-                        strokeDasharray: "251.2", // 2 * π * 40
+                        strokeDasharray: "251.2",
                         strokeDashoffset: `${251.2 * (1 - progress / 100)}`,
                       }}
                     />
@@ -223,7 +257,7 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
         {!isLoading && (
           <motion.div
             key="content"
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            initial={{ opacity: 0, y: 0, scale: 1 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ 
               duration: 1, 
