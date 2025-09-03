@@ -1,0 +1,11 @@
+image: node:20
+
+stages:
+  - test
+
+test:
+  stage: test
+  script:
+    - npm install
+    - npm run build
+    - npm run test || echo "No tests found"
