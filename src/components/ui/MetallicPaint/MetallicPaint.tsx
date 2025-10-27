@@ -410,12 +410,31 @@ export default function MetallicPaint({
   useEffect(() => {
     function initShader() {
       const canvas = canvasRef.current;
+      
+      // Check if WebGL2 is supported
+      if (!window.WebGL2RenderingContext) {
+        console.error("WebGL2 is not supported in this browser");
+        return;
+      }
+      
       const gl = canvas?.getContext("webgl2", {
         antialias: true,
         alpha: true,
+        premultipliedAlpha: false,
+        preserveDrawingBuffer: false,
       });
+      
       if (!canvas || !gl) {
+        console.error("Failed to get WebGL2 context");
         return;
+      }
+      
+      // Check for required extensions
+      const requiredExtensions = ['OES_texture_float', 'WEBGL_color_buffer_float'];
+      for (const ext of requiredExtensions) {
+        if (!gl.getExtension(ext)) {
+          console.warn(`Extension ${ext} not available, metallic effect may be limited`);
+        }
       }
 
       function createShader(
@@ -606,6 +625,16 @@ export default function MetallicPaint({
   }, [gl, uniforms, imageData]);
 
   return (
-    <canvas ref={canvasRef} className="block w-full h-full object-contain" />
+    <div className="block w-full h-full object-contain relative">
+      <canvas ref={canvasRef} className="block w-full h-full object-contain" />
+      {!gl && (
+        <div className="absolute inset-0 flex items-center justify-center bg-gray-100 rounded">
+          <div className="text-center">
+            <div className="text-xs text-gray-500 mb-1">WebGL2 Required</div>
+            <div className="text-xs text-gray-400">Metallic effect unavailable</div>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }
