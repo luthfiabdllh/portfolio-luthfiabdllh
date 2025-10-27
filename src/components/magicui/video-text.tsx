@@ -83,6 +83,9 @@ export function VideoText({
   const content = React.Children.toArray(children).join("");
 
   useEffect(() => {
+    // Pastikan kode hanya berjalan di client-side
+    if (typeof window === 'undefined') return;
+
     const updateSvgMask = () => {
       const responsiveFontSize =
         typeof fontSize === "number" ? `${fontSize}vw` : fontSize;

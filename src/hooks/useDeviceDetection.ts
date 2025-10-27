@@ -36,6 +36,9 @@ export function useDeviceDetection(): DeviceCapabilities {
   });
 
   useEffect(() => {
+    // Pastikan kode hanya berjalan di client-side
+    if (typeof window === 'undefined') return;
+
     const detectCapabilities = () => {
       // 1️⃣ Deteksi jenis perangkat
       const userAgent = navigator.userAgent.toLowerCase();
@@ -59,10 +62,17 @@ export function useDeviceDetection(): DeviceCapabilities {
       // 4️⃣ Deteksi preferensi motion
       const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-      // 5️⃣ Deteksi dukungan WebGL
-      const canvas = document.createElement("canvas");
-      const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
-      const supportsWebGL = !!gl;
+      // 5️⃣ Deteksi dukungan WebGL dengan pengecekan document
+      let supportsWebGL = true;
+      try {
+        if (typeof document !== 'undefined') {
+          const canvas = document.createElement("canvas");
+          const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+          supportsWebGL = !!gl;
+        }
+      } catch {
+        supportsWebGL = false;
+      }
 
       setCapabilities({
         isMobile,

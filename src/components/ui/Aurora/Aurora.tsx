@@ -128,6 +128,9 @@ export default function Aurora(props: AuroraProps) {
   const ctnDom = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Pastikan kode hanya berjalan di client-side
+    if (typeof window === 'undefined') return;
+
     const ctn = ctnDom.current;
     if (!ctn) return;
 

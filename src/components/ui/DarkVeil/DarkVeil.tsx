@@ -95,6 +95,9 @@ export default function DarkVeil({
 }: Props) {
   const ref = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
+    // Pastikan kode hanya berjalan di client-side
+    if (typeof window === 'undefined') return;
+
     const canvas = ref.current as HTMLCanvasElement;
     const parent = canvas.parentElement as HTMLElement;
 
