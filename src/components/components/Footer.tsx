@@ -1,31 +1,31 @@
 "use client";
-import { ArrowRight, Mail, Github, Linkedin, Twitter } from 'lucide-react';
+import { ArrowRight, Mail, Github, Linkedin, Instagram } from 'lucide-react';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
 const socialLinks = [
   {
-    href: "mailto:your.email@example.com",
+    href: "mailto:ahmadabdllh000@gmail.com",
     label: "Email",
     icon: Mail,
     external: true
   },
   {
-    href: "https://github.com/yourusername",
+    href: "https://github.com/luthfiabdllh",
     label: "GitHub", 
     icon: Github,
     external: true
   },
   {
-    href: "https://linkedin.com/in/yourusername",
+    href: "https://linkedin.com/in/luthfiabdllh",
     label: "LinkedIn",
     icon: Linkedin,
     external: true
   },
   {
-    href: "https://twitter.com/yourusername",
-    label: "Twitter",
-    icon: Twitter,
+    href: "https://instagram.com/luthfi_abdllh",
+    label: "Instagram",
+    icon: Instagram,
     external: true
   }
 ];

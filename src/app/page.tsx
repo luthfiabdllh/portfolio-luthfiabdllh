@@ -4,7 +4,8 @@ import HeroSection from "@/components/components/HeroSection";
 import IntroSection from "@/components/components/IntroSection";
 import Preloader from "@/components/components/PreLoader";
 import ProjectSection from "@/components/components/ProjectSection";
-import ServicesSection, { ServicesGrid } from "@/components/components/ServicesSection";
+import { ServicesGrid } from "@/components/components/servicesGrid";
+import ServicesSection from "@/components/components/ServicesSection";
 import AnimatedBorder from "@/components/ui/border";
 
 export default function Home() {
@@ -13,13 +14,14 @@ export default function Home() {
       <HeroSection />
       <main className="rounded-t-3xl relative overflow-hidden z-10 bg-background">
         <IntroSection />
-        <AnimatedBorder duration={2} className="max-w-7xl mx-auto">
-          These aren&apos;t just services — they&apos;re stories in action. What follows
-          is a collection of real-world projects where design, development, and
-          user experience come together to solve problems and spark interaction.
+        <AnimatedBorder duration={2}>
+          These aren&apos;t just services — they&apos;re stories in action. What
+          follows is a collection of real-world projects where design,
+          development, and user experience come together to solve problems and
+          spark interaction.
         </AnimatedBorder>
         <ServicesSection />
-        <ServicesGrid/>
+        <ServicesGrid />
         <ProjectSection />
         <CtaSection />
         <Footer />

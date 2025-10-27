@@ -231,6 +231,9 @@ const Waves: React.FC<WavesProps> = ({
   ]);
 
   useEffect(() => {
+    // Pastikan kode hanya berjalan di client-side
+    if (typeof window === 'undefined') return;
+
     const canvas = canvasRef.current;
     const container = containerRef.current;
     if (!canvas || !container) return;

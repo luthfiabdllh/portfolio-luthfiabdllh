@@ -1,14 +1,21 @@
 "use client";
 import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import Aurora from "../ui/Aurora/Aurora";
-import ServicesCard from "./ServiceCard";
+import { useReducedMotion } from "@/hooks/useDeviceDetection";
+import dynamic from "next/dynamic";
+
+// Lazy load Aurora component
+const Aurora = dynamic(() => import("../ui/Aurora/Aurora"), {
+  loading: () => null,
+  ssr: false,
+});
 
 export default function ServicesSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoError, setVideoError] = useState(false);
-  const [hasPlayed, setHasPlayed] = useState(false); // Tambah state untuk track apakah sudah pernah play
+  const [hasPlayed, setHasPlayed] = useState(false);
+  const { shouldReduce, isMobile } = useReducedMotion();
 
   const isInView = useInView(sectionRef, {
     once: false,
@@ -109,7 +116,7 @@ export default function ServicesSection() {
       viewport={{ once: true, amount: 0.35 }}
       transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
       ref={sectionRef}
-      className="relative min-h-screen overflow-hidden pt-40"
+      className="relative min-h-screen overflow-hidden pt-20 sm:pt-32 md:pt-40"
       style={{ willChange: "opacity, transform, filter" }}
     >
       {/* Background Video */}
@@ -127,7 +134,7 @@ export default function ServicesSection() {
         {!videoError && (
           <video
             ref={videoRef}
-            className="w-full h-full object-bottom"
+            className="w-full h-full object-cover"
             preload="metadata"
             muted
             playsInline
@@ -153,20 +160,27 @@ export default function ServicesSection() {
         )}
       </motion.div>
 
-      <Aurora
-        colorStops={["#0025CE", "#0057FF", "#00A6FF", "#00FFD0", "#BADAFF"]}
-        blend={1.0}
-        amplitude={0.75}
-        speed={0.5}
-      />
+      {/* Skip Aurora for reduced motion or low-end devices */}
+      {!shouldReduce && (
+        <Aurora
+          colorStops={["#0025CE", "#0057FF", "#00A6FF", "#00FFD0", "#BADAFF"]}
+          blend={isMobile ? 0.5 : 1.0}
+          amplitude={isMobile ? 0.5 : 0.75}
+          speed={isMobile ? 0.3 : 0.5}
+        />
+      )}
 
       {/* Content */}
-      <div className="relative z-10 min-h-screen p-6">
+      <div className="relative z-10 min-h-screen px-4 sm:px-6 md:p-6 lg:p-8">
         <motion.div
           initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          transition={{
+            duration: shouldReduce ? 0.3 : 0.9,
+            delay: shouldReduce ? 0 : 0.15,
+            ease: [0.16, 1, 0.3, 1],
+          }}
           style={{ willChange: "opacity, transform, filter" }}
         >
           <div className="relative w-full max-w-4xl">
@@ -189,19 +203,24 @@ export default function ServicesSection() {
           initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true, amount: 0.35 }}
-          transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-xl grid grid-cols-2 gap-4 mt-20"
+          transition={{
+            duration: shouldReduce ? 0.3 : 1,
+            delay: shouldReduce ? 0 : 0.3,
+            ease: [0.16, 1, 0.3, 1],
+          }}
+          className="max-w-4xl grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mt-12 sm:mt-16 md:mt-20"
           style={{ willChange: "opacity, transform, filter" }}
         >
-          <div>
-            <div className="flex leading-0 space-x-4 items-center">
+          <div className="space-y-4 sm:space-y-6">
+            <div className="flex leading-0 space-x-3 sm:space-x-4 items-center">
               <span className="inline-block align-middle animate-pulse">
                 <svg
-                  width="24"
-                  height="19"
+                  width="20"
+                  height="16"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  className="sm:w-6 sm:h-5"
                 >
                   <circle
                     cx="9.5"
@@ -224,16 +243,20 @@ export default function ServicesSection() {
                   </defs>
                 </svg>
               </span>
-              <span>CAPABILITIES</span>
+              <span className="text-lg sm:text-xl font-medium">
+                CAPABILITIES
+              </span>
             </div>
           </div>
-          <div className="space-y-4">
-            <p>What begins in code endures in experience.</p>
-            <p>
+          <div className="space-y-3 sm:space-y-4">
+            <p className="text-sm sm:text-base leading-relaxed">
+              What begins in code endures in experience.
+            </p>
+            <p className="text-sm sm:text-base leading-relaxed">
               Every journey I architect, every system I shape —crafted with
               intention, refined with quiet precision.
             </p>
-            <p>
+            <p className="text-sm sm:text-base leading-relaxed">
               Though the logic hums in silence, its presence lingers — in every
               seamless motion, in every moment that simply feels right.
             </p>
@@ -241,66 +264,7 @@ export default function ServicesSection() {
         </motion.div>
       </div>
 
-      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#2A2F45] to bg-transparent h-80"></div>
+      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#2A2F45] to bg-transparent h-60 sm:h-72 md:h-80"></div>
     </motion.section>
-  );
-}
-
-const servicesData = [
-  {
-    videoSrc: "/bgVideo/frontend.webm",
-    title: "FRONTEND ",
-    description:
-      "Where design meets interaction. I bring interfaces to life with responsive layouts, intuitive navigation, and seamless user experiences — ensuring every pixel feels purposeful across all screens.",
-    number: "01",
-    category: "FRoNTEND DEVELoPMENT",
-    background: "bg-[#2A2F45]",
-    backgroundFlip: "bg-[#2A2F45]",
-  },
-  {
-    videoSrc: "/bgVideo/backend.webm",
-    title: "BACKEND",
-    description:
-      "The invisible engine that powers everything. I build robust, scalable, and secure systems — from databases to APIs — that ensure your application performs reliably behind the scenes.",
-    number: "02",
-    category: "BACKEND DEVELoPMENT",
-    background: "bg-[#1A1F2D]",
-    backgroundFlip: "bg-[#1A1F2D]",
-  },
-  {
-    videoSrc: "/bgVideo/uiux.webm",
-    title: "UI/UX ",
-    description:
-      "Design that speaks without words. I craft thoughtful, user-centered experiences that not only look beautiful but guide users effortlessly — blending aesthetics with usability in perfect harmony.",
-    number: "03",
-    category: "UI/UX DESIgN",
-    background: "bg-[#0D101A]",
-    backgroundFlip: "bg-[#0D101A]",
-  },
-];
-
-export function ServicesGrid() {
-  return (
-    <div className="space-y-0">
-      {servicesData.map((service) => (
-        <motion.div
-          key={service.title}
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        >
-          <ServicesCard
-            videoSrc={service.videoSrc}
-            title={service.title}
-            description={service.description}
-            number={service.number}
-            category={service.category}
-            background={service.background}
-            backgroundFlip={service.backgroundFlip}
-          />
-        </motion.div>
-      ))}
-    </div>
   );
 }

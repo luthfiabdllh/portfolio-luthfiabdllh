@@ -23,6 +23,11 @@ const defaultParams: ShaderParams = {
 export function parseLogoImage(
   file: File,
 ): Promise<{ imageData: ImageData; pngBlob: Blob }> {
+  // Pastikan kode hanya berjalan di client-side
+  if (typeof window === 'undefined' || typeof document === 'undefined') {
+    return Promise.reject(new Error("This function can only be run in a browser environment"));
+  }
+  
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
 
@@ -499,7 +504,7 @@ export default function MetallicPaint({
 
     initShader();
     updateUniforms();
-  }, []);
+  }, [updateUniforms]);
 
   useEffect(() => {
     updateUniforms();
@@ -529,6 +534,9 @@ export default function MetallicPaint({
   }, [gl, uniforms, params.speed]);
 
   useEffect(() => {
+    // Pastikan kode hanya berjalan di client-side
+    if (typeof window === 'undefined') return;
+
     const canvasEl = canvasRef.current;
     if (!canvasEl || !gl || !uniforms) return;
 

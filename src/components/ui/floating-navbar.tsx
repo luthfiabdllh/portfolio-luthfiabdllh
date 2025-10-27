@@ -22,6 +22,9 @@ export function FloatingNav({ navItems, className = "" }: FloatingNavProps) {
   const [activeSection, setActiveSection] = useState("")
 
   useEffect(() => {
+    // Pastikan kode hanya berjalan di client-side
+    if (typeof window === 'undefined') return;
+
     const handleScroll = () => {
       const currentScrollY = window.scrollY
 
@@ -75,7 +78,9 @@ export function FloatingNav({ navItems, className = "" }: FloatingNavProps) {
         })
       }
     } else {
-      window.location.href = link
+      if (typeof window !== 'undefined') {
+        window.location.href = link
+      }
     }
   }
 

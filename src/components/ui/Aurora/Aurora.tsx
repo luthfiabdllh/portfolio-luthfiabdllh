@@ -128,6 +128,9 @@ export default function Aurora(props: AuroraProps) {
   const ctnDom = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Pastikan kode hanya berjalan di client-side
+    if (typeof window === 'undefined') return;
+
     const ctn = ctnDom.current;
     if (!ctn) return;
 
@@ -209,7 +212,7 @@ export default function Aurora(props: AuroraProps) {
       }
       gl.getExtension("WEBGL_lose_context")?.loseContext();
     };
-  }, [amplitude]);
+  }, [amplitude, blend, colorStops]);
 
   return <div ref={ctnDom} className="w-full h-full absolute bottom-0 left-0 -z-1" />;
 }

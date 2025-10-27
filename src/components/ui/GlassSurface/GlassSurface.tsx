@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useId } from "react";
+import React, { useCallback, useEffect, useRef, useState, useId } from "react";
 
 export interface GlassSurfaceProps {
   children?: React.ReactNode;
@@ -100,7 +100,7 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
     setIsClient(true);
   }, []);
 
-  const generateDisplacementMap = () => {
+  const generateDisplacementMap = useCallback(() => {
     if (!containerRef.current) return "";
     
     const rect = containerRef.current.getBoundingClientRect();
@@ -128,13 +128,13 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
     `;
 
     return `data:image/svg+xml,${encodeURIComponent(svgContent)}`;
-  };
+  }, [containerRef, redGradId, blueGradId, borderWidth, borderRadius, mixBlendMode, brightness, opacity, blur]);
 
-  const updateDisplacementMap = () => {
+  const updateDisplacementMap = useCallback(() => {
     if (feImageRef.current && isClient) {
       feImageRef.current.setAttribute("href", generateDisplacementMap());
     }
-  };
+  }, [feImageRef, isClient, generateDisplacementMap]);
 
   useEffect(() => {
     if (!isClient) return;
@@ -175,6 +175,7 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
     xChannel,
     yChannel,
     mixBlendMode,
+    updateDisplacementMap,
   ]);
 
   useEffect(() => {
@@ -189,13 +190,13 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
     return () => {
       resizeObserver.disconnect();
     };
-  }, [isClient]);
+  }, [isClient, updateDisplacementMap]);
 
   useEffect(() => {
     if (isClient) {
       setTimeout(updateDisplacementMap, 0);
     }
-  }, [width, height, isClient]);
+  }, [width, height, isClient, updateDisplacementMap]);
 
   const supportsSVGFilters = () => {
     if (typeof window === "undefined" || !isClient) return false;
