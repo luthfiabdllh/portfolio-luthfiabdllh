@@ -1,5 +1,5 @@
 "use client";
-import { ArrowRight, Mail, Github, Linkedin, Instagram, Twitter } from 'lucide-react';
+import { ArrowRight, Mail, Github, Linkedin, Instagram } from 'lucide-react';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
@@ -25,7 +25,7 @@ const socialLinks = [
   {
     href: "https://instagram.com/luthfi_abdllh",
     label: "Instagram",
-    icon: Twitter,
+    icon: Instagram,
     external: true
   }
 ];
