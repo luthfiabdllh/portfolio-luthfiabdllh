@@ -499,7 +499,7 @@ export default function MetallicPaint({
 
     initShader();
     updateUniforms();
-  }, []);
+  }, [updateUniforms]);
 
   useEffect(() => {
     updateUniforms();

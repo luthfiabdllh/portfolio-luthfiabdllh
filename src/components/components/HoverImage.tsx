@@ -9,35 +9,35 @@ export const HoverImageLinks = () => {
       <div className="mx-auto max-w-8xl">
         <Link
           heading="EduKita"
-          subheading="Learn what we do here"
-          imgSrc="/imgs/random/11.jpg"
-          href="#"
+          subheading="Open-data education mapping system"
+          imgSrc="/images/edukita.jpeg"
+          href="https://edukita-xi.vercel.app/"
         />
         <Link
           heading="Semesta Data Digital"
-          subheading="We work with great people"
-          imgSrc="/imgs/random/6.jpg"
-          href="#"
+          subheading="Company profile and services"
+          imgSrc="/images/sdd.jpeg"
+          href="https://web.semesta.vc/"
         />
         <Link
-          heading="MeLi"
-          subheading="Our work speaks for itself"
-          imgSrc="/imgs/random/4.jpg"
+          heading="APPIKS"
+          subheading="Anti-bullying monitoring web app"
+          imgSrc="/images/appiks.png"
           href="#"
         />
         <Link
           heading="SkyClub"
-          subheading="We want cool people"
-          imgSrc="/imgs/random/5.jpg"
+          subheading="Field Reservation App for Sports Club"
+          imgSrc="/images/skyclub.jpeg"
           href="#"
         />
         <Link
-          heading="Cashify"
-          subheading="Incase you're bored"
-          imgSrc="/imgs/random/10.jpg"
+          heading="Inviro CRM Apps"
+          subheading="CRM and sales management app"
+          imgSrc="/images/inviro.png"
           href="#"
         />
-        
+
         {/* SwipeButton dengan style yang sama */}
         <SwipeLink
           heading="More Projects"
@@ -173,10 +173,10 @@ interface SwipeLinkProps {
 const SwipeLink = ({ heading, subheading, href }: SwipeLinkProps) => {
   const [isCompleted, setIsCompleted] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
-  
+
   const swipeX = useMotionValue(0);
   const progress = useTransform(swipeX, [0, 80], [0, 1]); // Reduced from 150 to 80
-  
+
   const handleDragStart = () => {
     setIsDragging(true);
   };
@@ -186,8 +186,9 @@ const SwipeLink = ({ heading, subheading, href }: SwipeLinkProps) => {
     info: { offset: { x: number; y: number } }
   ) => {
     setIsDragging(false);
-    
-    if (info.offset.x > 60) { // Reduced from 120 to 60
+
+    if (info.offset.x > 60) {
+      // Reduced from 120 to 60
       setIsCompleted(true);
       setTimeout(() => {
         window.location.href = href;
@@ -230,7 +231,7 @@ const SwipeLink = ({ heading, subheading, href }: SwipeLinkProps) => {
             </motion.span>
           ))}
         </motion.span>
-        <motion.span 
+        <motion.span
           className="relative z-10 mt-2 block text-base text-neutral-500 transition-colors duration-500 group-hover:text-neutral-50"
           animate={isCompleted ? { color: "#10b981" } : {}}
         >
@@ -259,38 +260,40 @@ const SwipeLink = ({ heading, subheading, href }: SwipeLinkProps) => {
         }}
         transition={{ type: "spring", stiffness: 400, damping: 25 }} // Increased stiffness for snappier feel
         className="relative z-10 p-4 cursor-grab active:cursor-grabbing"
-        whileDrag={{ 
+        whileDrag={{
           scale: 1.1,
           backgroundColor: "rgba(59, 130, 246, 0.1)",
-          borderRadius: "12px"
+          borderRadius: "12px",
         }}
       >
         <motion.div
           animate={{
             rotate: isCompleted ? 360 : isDragging ? 12 : 0,
-            scale: isDragging ? 1.1 : 1
+            scale: isDragging ? 1.1 : 1,
           }}
           transition={{ duration: 0.3 }}
         >
-          <ArrowRight 
+          <ArrowRight
             className={`size-12 transition-colors duration-300 ${
-              isCompleted ? 'text-green-500' : 
-              isDragging ? 'text-blue-500' : 
-              'text-current'
-            }`} 
+              isCompleted
+                ? "text-green-500"
+                : isDragging
+                ? "text-blue-500"
+                : "text-current"
+            }`}
           />
         </motion.div>
       </motion.div>
-      
+
       {/* Progress bar */}
       <motion.div
         className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-blue-500 to-green-500 rounded-full"
-        style={{ 
+        style={{
           width: useTransform(progress, [0, 1], ["0%", "100%"]),
-          opacity: useTransform(progress, [0, 0.1, 1], [0, 1, 1])
+          opacity: useTransform(progress, [0, 0.1, 1], [0, 1, 1]),
         }}
       />
-      
+
       {/* Drag hint */}
       {!isDragging && !isCompleted && (
         <motion.div

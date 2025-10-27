@@ -2,15 +2,23 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Waves from "../ui/Waves/Waves";
 import ScrollIcon from "../ui/ScrollIcon";
 import LogoMetallic from "../ui/LogoMetallic";
 import { useTheme } from "next-themes";
 import { useEffect, useMemo, useState } from "react";
+import { useReducedMotion } from "@/hooks/useDeviceDetection";
+import dynamic from "next/dynamic";
+
+// Lazy load Waves component
+const Waves = dynamic(() => import("../ui/Waves/Waves"), {
+  loading: () => <div className="absolute inset-0 bg-gradient-to-br from-background to-muted/20" />,
+  ssr: false
+});
 
 export default function HeroSection() {
     const { resolvedTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
+    const { shouldReduce } = useReducedMotion();
 
     useEffect(() => {
         setMounted(true);
@@ -22,58 +30,67 @@ export default function HeroSection() {
         return resolvedTheme === 'dark' ? "#333745" : "#A8B1C7";
     }, [mounted, resolvedTheme]);
 
+    // Optimized wave config based on device capabilities
+    const waveConfig = useMemo(() => ({
+        lineColor,
+        waveSpeedX: shouldReduce ? 0.01 : 0.02,
+        waveSpeedY: shouldReduce ? 0.005 : 0.01,
+        waveAmpX: shouldReduce ? 20 : 40,
+        waveAmpY: shouldReduce ? 10 : 20,
+        friction: 0.9,
+        tension: 0.01,
+        maxCursorMove: shouldReduce ? 60 : 120,
+        xGap: shouldReduce ? 20 : 12,
+        yGap: shouldReduce ? 50 : 36,
+    }), [lineColor, shouldReduce]);
+
     
     return (
         <div className="sticky top-0 z-10 flex items-center justify-center w-full h-screen bg-background p-3 sm:p-6" style={{ overflow: 'visible' }}>
-            <Waves
-                lineColor={lineColor}
-                waveSpeedX={0.02}
-                waveSpeedY={0.01}
-                waveAmpX={40}
-                waveAmpY={20}
-                friction={0.9}
-                tension={0.01}
-                maxCursorMove={120}
-                xGap={12}
-                yGap={36}
-                className="absolute inset-0 z-0"
-            />
+            {/* Skip waves for reduced motion or low-end devices */}
+            {!shouldReduce && (
+                <Waves
+                    {...waveConfig}
+                    className="absolute inset-0 z-0"
+                />
+            )}
 
-            {/* Scrolling text - responsive */}
-            <div 
+            {/* Scrolling text - optimized for performance */}
+            <div
                 className="absolute top-1/2 left-1/2 z-9"
                 style={{
                     transform: 'translate(-50%, -50%)',
                     width: '100vw',
                     overflow: 'hidden',
-                    contain: 'layout style paint' 
+                    contain: 'layout style paint'
                 }}
             >
                 <motion.div
                     className="flex items-center"
-                    style={{ 
+                    style={{
                         width: 'max-content',
-                        gap: '50px'
+                        gap: shouldReduce ? '30px' : '50px'
                     }}
-                    animate={{
+                    animate={shouldReduce ? {} : {
                         x: [0, -2535]
                     }}
                     transition={{
                         x: {
                             repeat: Infinity,
                             repeatType: "loop",
-                            duration: 25,
+                            duration: shouldReduce ? 40 : 25,
                             ease: "linear"
                         }
                     }}
                     initial={{ x: 0 }}
                 >
-                    {Array.from({ length: 8 }, (_, index) => (
+                    {/* Reduce number of images for mobile/low-end devices */}
+                    {Array.from({ length: shouldReduce ? 4 : 8 }, (_, index) => (
                         <motion.div
                             key={index}
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            transition={{ delay: index * 0.1 }}
+                            transition={{ delay: shouldReduce ? 0 : index * 0.1 }}
                         >
                             <Image
                                 alt={`text hero ${index + 1}`}
@@ -81,10 +98,10 @@ export default function HeroSection() {
                                 width={2485}
                                 height={300}
                                 className="w-auto will-change-transform"
-                                style={{ 
-                                    maxWidth: 'none', 
+                                style={{
+                                    maxWidth: 'none',
                                     flexShrink: 0,
-                                    height: '300px'
+                                    height: shouldReduce ? '200px' : '300px'
                                 }}
                                 priority={index === 0}
                                 loading={index === 0 ? "eager" : "lazy"}
@@ -94,16 +111,21 @@ export default function HeroSection() {
                 </motion.div>
             </div>
 
-            {/* Hero image - responsive */}
+            {/* Hero image - optimized */}
             <Image
                 src="/images/hero.png"
                 alt="Hero Image"
                 width={987}
                 height={1316}
-                className="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-10 
-                        h-[60vh] sm:h-[70vh] md:h-[75vh] lg:h-[80vh] 
+                className="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-10
+                        h-[60vh] sm:h-[70vh] md:h-[75vh] lg:h-[80vh]
                         w-auto object-contain
                         hero-crop"
+                style={{
+                    filter: shouldReduce ? 'none' : 'contrast(1.1) brightness(1.05)'
+                }}
+                priority={true}
+                sizes="(max-width: 768px) 60vw, (max-width: 1024px) 70vw, 80vw"
             />
 
             {/* Bottom section - responsive */}
