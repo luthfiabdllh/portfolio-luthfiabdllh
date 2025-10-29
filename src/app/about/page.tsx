@@ -1,4 +1,6 @@
 import FlowerSection from "@/components/components/FlowerSection";
+import Footer from "@/components/components/Footer";
+import { TimelineSection } from "@/components/components/TimelineSection";
 
 export default function ProjectsPage() {
   return (
@@ -11,9 +13,8 @@ export default function ProjectsPage() {
         }}
       />
       <FlowerSection />
-      <div className="min-h-screen">
-
-      </div>
+      <TimelineSection />
+      <Footer />
     </div>
   );
 }
