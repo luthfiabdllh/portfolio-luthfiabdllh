@@ -4,7 +4,7 @@ import CountUp from "../ui/CountUp/CountUp";
 
 export default function IntroSection() {
   return (
-    <div className="bg-[linear-gradient(to_bottom,oklch(0.1511_0.0302_269.18)_0%,oklch(0.1511_0.028_269.18)_20%,oklch(0.1511_0.026_269.18)_40%,oklch(0.1511_0.024_269.18)_60%,oklch(0.1511_0.022_269.18)_80%,oklch(0.1511_0.0202_269.18)_100%)] relative z-10 h-full flex items-center justify-center p-4 sm:p-6 md:p-8 lg:px-12 lg:py-28">
+    <div className="relative z-10 h-full flex items-center justify-center p-4 sm:p-6 md:p-8 lg:px-12 lg:py-28">
       <div className="w-full max-w-7xl mx-auto space-y-32">
         <div className="flex flex-col md:flex-row gap-8 sm:gap-12 md:gap-16 lg:gap-20 xl:gap-24 2xl:gap-27 items-center md:items-center">
           <div className="text-center md:text-right flex-shrink-0">
