@@ -1,7 +1,0 @@
-export default function ProjectsPage() {
-  return (
-    <div className="min-h-screen w-full bg-black relative">
-        
-    </div>
-  );
-}
