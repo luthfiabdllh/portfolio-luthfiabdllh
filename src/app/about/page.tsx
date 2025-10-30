@@ -1,3 +1,5 @@
+
+import CtaSection from "@/components/components/CtaSection";
 import FlowerSection from "@/components/components/FlowerSection";
 import Footer from "@/components/components/Footer";
 import { TimelineSection } from "@/components/components/TimelineSection";
@@ -14,6 +16,7 @@ export default function ProjectsPage() {
       />
       <FlowerSection />
       <TimelineSection />
+      <CtaSection />
       <Footer />
     </div>
   );
