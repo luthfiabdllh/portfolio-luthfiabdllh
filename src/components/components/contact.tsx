@@ -120,7 +120,7 @@ const Contact2 = () => {
   return (
     <section className="min-h-screen relative overflow-hidden">
       <Navbar />
-      <div className="mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8 py-8 lg:py-0 min-h-screen flex items-center justify-center">
+      <div className="mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8 py-8 lg:py-0 mt-10 min-h-screen flex items-center justify-center">
         <div className="flex flex-col justify-between gap-8 sm:gap-12 lg:gap-20 lg:flex-row w-full">
           {/* Left Column - Contact Info */}
           <div className="flex max-w-sm flex-col justify-center gap-6 sm:gap-8 lg:gap-10 lg:sticky lg:top-20 lg:h-fit mx-auto lg:mx-0">
