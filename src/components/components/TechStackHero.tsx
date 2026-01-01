@@ -17,6 +17,8 @@ import {
     SiLaravel,
     SiNestjs
 } from "react-icons/si";
+import { SparklesCore } from "../ui/sparkles";
+import { ShootingStars } from "../ui/shooting-stars";
 
 export function TechStackHero() {
     return (
@@ -24,6 +26,45 @@ export function TechStackHero() {
             <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-black">
                 Tech Stack
             </span>
+
+            <div className="w-full absolute inset-0 h-screen">
+                <SparklesCore
+                    id="tsparticlesfullpage"
+                    background="transparent"
+                    minSize={0.6}
+                    maxSize={1.4}
+                    particleDensity={50}
+                    className="w-full h-full"
+                    particleColor="#FFFFFF"
+                    speed={0.1}
+                />
+
+                <ShootingStars
+                    starColor="#9E00FF"
+                    trailColor="#2EB9DF"
+                    minSpeed={15}
+                    maxSpeed={35}
+                    minDelay={1000}
+                    maxDelay={3000}
+                />
+                <ShootingStars
+                    starColor="#FF0099"
+                    trailColor="#FFB800"
+                    minSpeed={10}
+                    maxSpeed={25}
+                    minDelay={2000}
+                    maxDelay={4000}
+                />
+                <ShootingStars
+                    starColor="#00FF9E"
+                    trailColor="#00B8FF"
+                    minSpeed={20}
+                    maxSpeed={40}
+                    minDelay={1500}
+                    maxDelay={3500}
+                />
+
+            </div>
 
             {/* Inner Ring (Radius 100) - Core Frontend */}
             <OrbitingCircles

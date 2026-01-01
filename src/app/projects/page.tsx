@@ -76,7 +76,7 @@ export default function ProjectsPage() {
             <Navbar />
             <main className="min-h-screen pb-20 px-0 md:px-0">
                 <div className="w-full">
-                    <div className="w-full max-w-7xl mx-auto mb-20">
+                    <div className="w-full mx-auto mb-20">
                         <TechStackHero />
                     </div>
                     <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8 px-4 md:px-8 mb-20">
