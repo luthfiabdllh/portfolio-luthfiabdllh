@@ -1,5 +1,5 @@
 import Footer from "@/components/components/Footer";
-import HeroSertifications from "@/components/components/HeroParallax";
+import HeroCertifications from "@/components/components/HeroParallax";
 import Navbar from "@/components/components/Navbar";
 
 export default function SertificationsPage() {
@@ -13,7 +13,7 @@ export default function SertificationsPage() {
         }}
       />
       <Navbar />
-      <HeroSertifications />
+      <HeroCertifications />
       <Footer />
     </div>
   );

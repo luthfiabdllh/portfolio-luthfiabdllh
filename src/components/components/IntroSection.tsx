@@ -1,6 +1,7 @@
 import { Download } from "lucide-react";
 import { ShimmerButton } from "../magicui/shimmer-button";
 import CountUp from "../ui/CountUp/CountUp";
+import Link from "next/link";
 
 export default function IntroSection() {
   return (
@@ -35,15 +36,21 @@ export default function IntroSection() {
                 apply his skills to real-world challenges.
               </p>
 
-              <ShimmerButton
-                className="w-full sm:w-auto shadow-2xl bg-background hover:bg-background/80 transition-all duration-300 hover:scale-105 active:scale-95 min-h-[44px] sm:min-h-[48px] lg:min-h-[52px] px-6 sm:px-8 lg:px-10 py-3 sm:py-4 text-sm sm:text-base lg:text-lg font-medium leading-none tracking-tight flex items-center   zjustify-center gap-2"
-                shimmerDuration="5s"
-                shimmerSize="0.1em"
-                background="var(--background)"
+              <Link
+                href="/document/cv/CV_AhmadLuthfiAbdillah.pdf"
+                download="CV_AhmadLuthfiAbdillah.pdf"
+                className="w-full sm:w-auto inline-block"
               >
-                <Download />
-                Resume
-              </ShimmerButton>
+                <ShimmerButton
+                  className="w-full shadow-2xl bg-background hover:bg-background/80 transition-all duration-300 hover:scale-105 active:scale-95 min-h-[44px] sm:min-h-[48px] lg:min-h-[52px] px-6 sm:px-8 lg:px-10 py-3 sm:py-4 text-sm sm:text-base lg:text-lg font-medium leading-none tracking-tight flex items-center justify-center gap-2"
+                  shimmerDuration="5s"
+                  shimmerSize="0.1em"
+                  background="var(--background)"
+                >
+                  <Download />
+                  Resume
+                </ShimmerButton>
+              </Link>
             </div>
           </div>
         </div>

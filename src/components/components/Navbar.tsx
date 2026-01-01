@@ -46,13 +46,13 @@ export default function Navbar() {
           Works
         </Link>
         <Link
-          href="/sertifications"
+          href="/certifications"
           className="font-light leading-tight hover:font-normal transition-all cursor-pointer"
-          aria-label="My Sertifications"
+          aria-label="My Certifications"
         >
           My
           <br />
-          Sertifications
+          Certifications
         </Link>
         <Link
           href="/about"
