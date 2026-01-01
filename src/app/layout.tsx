@@ -9,7 +9,7 @@ import SmoothScroller from "@/components/components/SmoothScroller";
 
 export const metadata: Metadata = {
   title: "Portfolio",
-  description: "My Portfolio",
+  description: "Luthfi Abdllah Portfolio",
 };
 
 export default function RootLayout({
