@@ -25,8 +25,7 @@
   --wave-color-light: #a8b1c7;
   --wave-color-dark: #333745;
 
-  --animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite
-    alternate;
+  --animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite alternate;
   --animate-spin-around: spin-around calc(var(--speed) * 2) infinite linear;
 
   @keyframes shimmer-slide {
@@ -34,18 +33,22 @@
       transform: translate(calc(100cqw - 100%), 0);
     }
   }
+
   @keyframes spin-around {
     0% {
       transform: translateZ(0) rotate(0);
     }
+
     15%,
     35% {
       transform: translateZ(0) rotate(90deg);
     }
+
     65%,
     85% {
       transform: translateZ(0) rotate(270deg);
     }
+
     100% {
       transform: translateZ(0) rotate(360deg);
     }
@@ -87,6 +90,18 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   --color-destructive-foreground: var(--destructive-foreground);
+  --animate-orbit: orbit calc(var(--duration)*1s) linear infinite;
+
+  /* ---break---*/
+  @keyframes orbit {
+    0% {
+      transform: rotate(0deg) translateY(calc(var(--radius) * 1px)) rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg) translateY(calc(var(--radius) * 1px)) rotate(-360deg);
+    }
+  }
 }
 
 :root {
@@ -94,35 +109,64 @@
   --font-carl-brow: "Carl Brow";
   --wave-color: var(--wave-color-light);
   --radius: 0.625rem;
-  --background: oklch(1 0 0); /* White */
-  --foreground: oklch(0.23 0 0); /* Off-Black */
-  --card: oklch(0.97 0 0); /* Light Gray (Surface/Card) */
-  --card-foreground: oklch(0.23 0 0); /* Off-Black */
-  --popover: oklch(1 0 0); /* White */
-  --popover-foreground: oklch(0.23 0 0); /* Off-Black */
-  --primary: oklch(0.75 0.17 215); /* Electric Blue */
-  --primary-foreground: oklch(0.23 0 0); /* Off-Black text on blue */
-  --secondary: oklch(0.97 0 0); /* Light Gray (Surface/Subtle) */
-  --secondary-foreground: oklch(0.23 0 0); /* Off-Black */
-  --muted: oklch(0.97 0 0); /* Light Gray */
-  --muted-foreground: oklch(0.67 0 0); /* Medium Gray */
-  --accent: oklch(0.94 0 0); /* Lighter Gray (Surface/Hover) */
-  --accent-foreground: oklch(0.23 0 0); /* Off-Black */
-  --destructive: oklch(0.63 0.22 25); /* Red */
-  --destructive-foreground: oklch(1 0 0); /* White */
-  --border: oklch(0.27 0.03 250); /* Lighter Gray */
-  --input: oklch(0.94 0 0); /* Lighter Gray */
-  --ring: oklch(0.75 0.17 215); /* Electric Blue */
-  --chart-1: oklch(0.75 0.17 215); /* Electric Blue */
-  --chart-2: oklch(0.53 0.23 285); /* Kinetic Violet */
-  --chart-3: oklch(0.7 0.17 220); /* Cyan */
-  --chart-4: oklch(0.67 0 0); /* Medium Gray */
-  --chart-5: oklch(0.23 0 0); /* Off-Black */
-  --sidebar: oklch(0.97 0 0); /* Light Gray */
-  --sidebar-foreground: oklch(0.23 0 0); /* Off-Black */
-  --sidebar-primary: oklch(0.75 0.17 215); /* Electric Blue */
-  --sidebar-primary-foreground: oklch(0.23 0 0); /* Off-Black */
-  --sidebar-accent: oklch(0.94 0 0); /* Lighter Gray (Hover) */
+  --background: oklch(1 0 0);
+  /* White */
+  --foreground: oklch(0.23 0 0);
+  /* Off-Black */
+  --card: oklch(0.97 0 0);
+  /* Light Gray (Surface/Card) */
+  --card-foreground: oklch(0.23 0 0);
+  /* Off-Black */
+  --popover: oklch(1 0 0);
+  /* White */
+  --popover-foreground: oklch(0.23 0 0);
+  /* Off-Black */
+  --primary: oklch(0.75 0.17 215);
+  /* Electric Blue */
+  --primary-foreground: oklch(0.23 0 0);
+  /* Off-Black text on blue */
+  --secondary: oklch(0.97 0 0);
+  /* Light Gray (Surface/Subtle) */
+  --secondary-foreground: oklch(0.23 0 0);
+  /* Off-Black */
+  --muted: oklch(0.97 0 0);
+  /* Light Gray */
+  --muted-foreground: oklch(0.67 0 0);
+  /* Medium Gray */
+  --accent: oklch(0.94 0 0);
+  /* Lighter Gray (Surface/Hover) */
+  --accent-foreground: oklch(0.23 0 0);
+  /* Off-Black */
+  --destructive: oklch(0.63 0.22 25);
+  /* Red */
+  --destructive-foreground: oklch(1 0 0);
+  /* White */
+  --border: oklch(0.27 0.03 250);
+  /* Lighter Gray */
+  --input: oklch(0.94 0 0);
+  /* Lighter Gray */
+  --ring: oklch(0.75 0.17 215);
+  /* Electric Blue */
+  --chart-1: oklch(0.75 0.17 215);
+  /* Electric Blue */
+  --chart-2: oklch(0.53 0.23 285);
+  /* Kinetic Violet */
+  --chart-3: oklch(0.7 0.17 220);
+  /* Cyan */
+  --chart-4: oklch(0.67 0 0);
+  /* Medium Gray */
+  --chart-5: oklch(0.23 0 0);
+  /* Off-Black */
+  --sidebar: oklch(0.97 0 0);
+  /* Light Gray */
+  --sidebar-foreground: oklch(0.23 0 0);
+  /* Off-Black */
+  --sidebar-primary: oklch(0.75 0.17 215);
+  /* Electric Blue */
+  --sidebar-primary-foreground: oklch(0.23 0 0);
+  /* Off-Black */
+  --sidebar-accent: oklch(0.94 0 0);
+  /* Lighter Gray (Hover) */
   --sidebar-accent-foreground: oklch(0.23 0 0);
   --sidebar-border: oklch(0.94 0 0);
   --sidebar-ring: oklch(0.75 0.17 215);
@@ -131,35 +175,64 @@
 .dark {
   --radius: 0.625rem;
   --wave-color: var(--wave-color-dark);
-  --background: oklch(0.1511 0.0202 269.18); /* Abyss Black */
-  --foreground: oklch(0.95 0.03 210); /* Glowing White-Blue */
-  --card: oklch(0.15 0.02 260); /* Dark Card (Surface/Card) */
-  --card-foreground: oklch(0.95 0.03 210); /* Glowing White-Blue */
-  --popover: oklch(0.18 0.02 250); /* Abyss Black */
-  --popover-foreground: oklch(0.95 0.03 210); /* Glowing White-Blue */
-  --primary: oklch(0.75 0.17 215); /* Electric Blue */
-  --primary-foreground: oklch(0.18 0.02 250); /* Abyss Black text on blue */
-  --secondary: oklch(0.709 0 0); /* Dark Card (Surface/Subtle) */
-  --secondary-foreground: oklch(0.95 0.03 210); /* Glowing White-Blue */
-  --muted: oklch(0.21 0.02 250); /* Dark Card */
-  --muted-foreground: oklch(0.85 0.09 215); /* Light Blue */
-  --accent: oklch(0.27 0.03 250); /* Dark Blue (Surface/Hover) */
-  --accent-foreground: oklch(0.95 0.03 210); /* Glowing White-Blue */
-  --destructive: oklch(0.45 0.2 25); /* Darker Red */
-  --destructive-foreground: oklch(0.95 0.03 210); /* Glowing White-Blue */
-  --border: oklch(0.94 0 0); /* Dark Blue Border */
-  --input: oklch(0.27 0.03 250); /* Dark Blue Border */
-  --ring: oklch(0.75 0.17 215); /* Electric Blue */
-  --chart-1: oklch(0.75 0.17 215); /* Electric Blue */
-  --chart-2: oklch(0.85 0.09 215); /* Light Blue */
-  --chart-3: oklch(0.53 0.23 285); /* Kinetic Violet */
-  --chart-4: oklch(0.7 0.17 220); /* Cyan */
-  --chart-5: oklch(0.27 0.03 250); /* Dark Blue */
-  --sidebar: oklch(0.21 0.02 250); /* Dark Card */
-  --sidebar-foreground: oklch(0.95 0.03 210); /* Glowing White-Blue */
-  --sidebar-primary: oklch(0.75 0.17 215); /* Electric Blue */
-  --sidebar-primary-foreground: oklch(0.18 0.02 250); /* Abyss Black */
-  --sidebar-accent: oklch(0.27 0.03 250); /* Dark Blue (Hover) */
+  --background: oklch(0.1511 0.0202 269.18);
+  /* Abyss Black */
+  --foreground: oklch(0.95 0.03 210);
+  /* Glowing White-Blue */
+  --card: oklch(0.15 0.02 260);
+  /* Dark Card (Surface/Card) */
+  --card-foreground: oklch(0.95 0.03 210);
+  /* Glowing White-Blue */
+  --popover: oklch(0.18 0.02 250);
+  /* Abyss Black */
+  --popover-foreground: oklch(0.95 0.03 210);
+  /* Glowing White-Blue */
+  --primary: oklch(0.75 0.17 215);
+  /* Electric Blue */
+  --primary-foreground: oklch(0.18 0.02 250);
+  /* Abyss Black text on blue */
+  --secondary: oklch(0.709 0 0);
+  /* Dark Card (Surface/Subtle) */
+  --secondary-foreground: oklch(0.95 0.03 210);
+  /* Glowing White-Blue */
+  --muted: oklch(0.21 0.02 250);
+  /* Dark Card */
+  --muted-foreground: oklch(0.85 0.09 215);
+  /* Light Blue */
+  --accent: oklch(0.27 0.03 250);
+  /* Dark Blue (Surface/Hover) */
+  --accent-foreground: oklch(0.95 0.03 210);
+  /* Glowing White-Blue */
+  --destructive: oklch(0.45 0.2 25);
+  /* Darker Red */
+  --destructive-foreground: oklch(0.95 0.03 210);
+  /* Glowing White-Blue */
+  --border: oklch(0.94 0 0);
+  /* Dark Blue Border */
+  --input: oklch(0.27 0.03 250);
+  /* Dark Blue Border */
+  --ring: oklch(0.75 0.17 215);
+  /* Electric Blue */
+  --chart-1: oklch(0.75 0.17 215);
+  /* Electric Blue */
+  --chart-2: oklch(0.85 0.09 215);
+  /* Light Blue */
+  --chart-3: oklch(0.53 0.23 285);
+  /* Kinetic Violet */
+  --chart-4: oklch(0.7 0.17 220);
+  /* Cyan */
+  --chart-5: oklch(0.27 0.03 250);
+  /* Dark Blue */
+  --sidebar: oklch(0.21 0.02 250);
+  /* Dark Card */
+  --sidebar-foreground: oklch(0.95 0.03 210);
+  /* Glowing White-Blue */
+  --sidebar-primary: oklch(0.75 0.17 215);
+  /* Electric Blue */
+  --sidebar-primary-foreground: oklch(0.18 0.02 250);
+  /* Abyss Black */
+  --sidebar-accent: oklch(0.27 0.03 250);
+  /* Dark Blue (Hover) */
   --sidebar-accent-foreground: oklch(0.95 0.03 210);
   --sidebar-border: oklch(0.27 0.03 250);
   --sidebar-ring: oklch(0.75 0.17 215);
@@ -182,12 +255,15 @@
 }
 
 * {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 *::-webkit-scrollbar {
-  display: none; /* Chrome, Safari and Opera */
+  display: none;
+  /* Chrome, Safari and Opera */
 }
 
 @media (max-width: 595px) {
@@ -218,9 +294,11 @@ html {
     0% {
       background-position: 0% 50%;
     }
+
     50% {
       background-position: 100% 50%;
     }
+
     100% {
       background-position: 0% 50%;
     }
@@ -243,6 +321,7 @@ html {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }

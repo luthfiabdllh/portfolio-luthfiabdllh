@@ -130,7 +130,7 @@ interface AccordionProps {
 }
 
 export const Accordion = ({ items, className }: AccordionProps) => {
-    const [openIndex, setOpenIndex] = useState<number | null>(0); // Default open first item? Or null. Let's make it null.
+    const [openIndex, setOpenIndex] = useState<number | null>(null); // Default open first item? Or null. Let's make it null.
 
     const handleToggle = (index: number) => {
         setOpenIndex(openIndex === index ? null : index);
