@@ -4,6 +4,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/components/theme-provider";
 import { FloatingNavbar } from "@/components/components/FloatingNavbar";
 import { Toaster } from "sonner";
+import Preloader from "@/components/components/PreLoader";
+import SmoothScroller from "@/components/components/SmoothScroller";
 
 export const metadata: Metadata = {
   title: "Portfolio",
@@ -27,18 +29,22 @@ export default function RootLayout({
           defaultTheme="dark"
           disableTransitionOnChange
         >
-          <FloatingNavbar />
-          {children}
-          <Toaster 
-            position="top-right"
-            toastOptions={{
-              style: {
-                background: 'hsl(var(--background))',
-                border: '1px solid hsl(var(--border))',
-                color: 'hsl(var(--foreground))',
-              },
-            }}
-          />
+          <SmoothScroller>
+            <Preloader>
+              <FloatingNavbar />
+              {children}
+              <Toaster
+                position="top-right"
+                toastOptions={{
+                  style: {
+                    background: 'hsl(var(--background))',
+                    border: '1px solid hsl(var(--border))',
+                    color: 'hsl(var(--foreground))',
+                  },
+                }}
+              />
+            </Preloader>
+          </SmoothScroller>
         </ThemeProvider>
       </body>
     </html>
