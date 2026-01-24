@@ -27,9 +27,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Luthfi Abdillah" }],
   creator: "Luthfi Abdillah",
   publisher: "Luthfi Abdillah",
-  metadataBase: new URL(
-  "https://luthfiabdllh.my.id",
-  ),
+  metadataBase: new URL("https://luthfiabdllh.my.id"),
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -78,7 +76,7 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   verification: {
-    google: "google5de1c1b4d5bef859.html",
+    google: "google5de1c1b4d5bef859",
   },
 };
 
