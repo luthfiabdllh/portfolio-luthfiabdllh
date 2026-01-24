@@ -2,41 +2,21 @@
 import { useMotionValue, motion, useSpring, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import React, { useRef, useState } from "react";
+import { projects } from "@/data/projects";
 
 export const HoverImageLinks = () => {
   return (
     <section className="p-4 md:p-8">
       <div className="mx-auto max-w-8xl">
-        <Link
-          heading="EduKita"
-          subheading="Open-data education mapping system"
-          imgSrc="/images/edukita.jpeg"
-          href="https://edukita-xi.vercel.app/"
-        />
-        <Link
-          heading="Semesta Data Digital"
-          subheading="Company profile and services"
-          imgSrc="/images/sdd.jpeg"
-          href="https://web.semesta.vc/"
-        />
-        <Link
-          heading="APPIKS"
-          subheading="Anti-bullying monitoring web app"
-          imgSrc="/images/appiks.png"
-          href="#"
-        />
-        <Link
-          heading="SkyClub"
-          subheading="Field Reservation App for Sports Club"
-          imgSrc="/images/skyclub.jpeg"
-          href="#"
-        />
-        <Link
-          heading="Inviro CRM Apps"
-          subheading="CRM and sales management app"
-          imgSrc="/images/inviro.png"
-          href="#"
-        />
+        {projects.map((project, index) => (
+          <Link
+            key={index}
+            heading={project.heading}
+            subheading={project.subheading}
+            imgSrc={project.imgSrc}
+            href={project.href}
+          />
+        ))}
 
         {/* SwipeButton dengan style yang sama */}
         <SwipeLink
@@ -69,7 +49,7 @@ const Link = ({ heading, imgSrc, subheading, href }: LinkProps) => {
   const left = useTransform(mouseXSpring, [0.5, -0.5], ["60%", "70%"]);
 
   const handleMouseMove = (
-    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
   ) => {
     const rect = ref.current!.getBoundingClientRect();
 
@@ -183,7 +163,7 @@ const SwipeLink = ({ heading, subheading, href }: SwipeLinkProps) => {
 
   const handleDragEnd = (
     event: MouseEvent | TouchEvent,
-    info: { offset: { x: number; y: number } }
+    info: { offset: { x: number; y: number } },
   ) => {
     setIsDragging(false);
 
@@ -278,8 +258,8 @@ const SwipeLink = ({ heading, subheading, href }: SwipeLinkProps) => {
               isCompleted
                 ? "text-green-500"
                 : isDragging
-                ? "text-blue-500"
-                : "text-current"
+                  ? "text-blue-500"
+                  : "text-current"
             }`}
           />
         </motion.div>
