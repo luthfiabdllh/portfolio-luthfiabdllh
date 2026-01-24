@@ -57,8 +57,8 @@ export default function IntroSection() {
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-10 lg:gap-12">
           {[
             { to: 2, label: "Years of Experience" },
-            { to: 5, label: "Projects Completed" },
-            { to: 3, label: "Sertification" },
+            { to: 10, label: "Projects Completed" },
+            { to: 3, label: "Certification" },
             { to: 1500, label: "Hour of Coding" },
           ].map((item, idx) => (
             <div

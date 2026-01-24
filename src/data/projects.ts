@@ -59,7 +59,7 @@ export const projectDetails: ProjectDetail[] = [
     role: "FRONTEND DEVELOPER",
     description:
       "A Company Profile for Indonesia Nuclear Youth Student. Built with Animation, interactive features, and Robust SEO.",
-    tags: ["Animation", "Interactive Features", "SEO"],
+    tags: ["Animation", "Interactive Features", "SEO", "React", "NextJS"],
     image: "/images/inys.png",
     link: "#",
   },
@@ -71,7 +71,7 @@ export const projectDetails: ProjectDetail[] = [
     role: "FRONTEND DEVELOPER",
     description:
       "A Custom Company Profile for Adiwarna Pratama. Focused on modern design and user engagement.",
-    tags: ["Modern Design", "User Engagement", "Responsive"],
+    tags: ["Modern Design", "User Engagement", "Responsive", "React", "NextJS"],
     image: "/images/awp.png",
     link: "#",
   },
@@ -83,7 +83,7 @@ export const projectDetails: ProjectDetail[] = [
     role: "FULLSTACK DEVELOPER and AI SPECIALIST",
     description:
       "An AI-powered website for predicting stroke risks with precision.",
-    tags: ["AI Integration", "Machine Learning", "Health Tech"],
+    tags: ["AI Integration", "Machine Learning", "Health Tech", "NestJS", "Flask", "NextJS"],
     image: "/images/neuroguards.png",
     link: "https://neuroguard-indonesia.vercel.app/",
   },
@@ -95,7 +95,7 @@ export const projectDetails: ProjectDetail[] = [
     role: "FULLSTACK DEVELOPER",
     description:
       "An event management platform that simplifies planning and coordination.",
-    tags: ["Event Management", "Real-time Updates", "Attendee Tracking"],
+    tags: ["Event Management", "Real-time Updates", "Attendee Tracking", "Laravel", "NextJS"],
     image: "/images/eventora.png",
     link: "https://eventoraindonesia.vercel.app/",
   },
@@ -107,7 +107,7 @@ export const projectDetails: ProjectDetail[] = [
     role: "FRONTEND DEVELOPER",
     description:
       "A company profile for WormiBox with IoT-based vermicomposting monitoring.",
-    tags: ["IoT", "Vermicomposting", "Eco-friendly"],
+    tags: ["IoT", "Vermicomposting", "Eco-friendly", "React", "NextJS"],
     image: "/images/wormibox.png",
     link: "https://wormibox.novarentech.com/",
   },
@@ -118,7 +118,7 @@ export const projectDetails: ProjectDetail[] = [
     period: "2025",
     role: "FRONTEND DEVELOPER",
     description: "A company profile website for Novarentech software house.",
-    tags: ["Software House", "Company Profile", "Web Development"],
+    tags: ["Software House", "Company Profile", "Web Development", "React", "NextJS"],
     image: "/images/novaren.png",
     link: "https://novarentech.com/",
   },
@@ -130,7 +130,7 @@ export const projectDetails: ProjectDetail[] = [
     role: "FRONTEND DEVELOPER",
     description:
       "A Customer Relationship Management tool tailored for sales management. Built complex data visualization dashboards and interactive tables.",
-    tags: ["Dashboard", "Whatsapp Integration", "Enterprise"],
+    tags: ["Dashboard", "Whatsapp Integration", "Enterprise", "React", "NextJS"],
     image: "/images/inviro.png",
     link: "#",
   },
@@ -142,7 +142,7 @@ export const projectDetails: ProjectDetail[] = [
     role: "FRONTEND DEVELOPER",
     description:
       "An application dedicated to monitoring and preventing bullying in educational environments. Implemented real-time reporting and secure data handling.",
-    tags: ["Full Stack", "Security", "Real-time"],
+    tags: ["Full Stack", "Security", "Real-time", "React", "NextJS"],
     image: "/images/appiks.png",
     link: "#",
   },
@@ -154,7 +154,7 @@ export const projectDetails: ProjectDetail[] = [
     role: "FULLSTACK DEVELOPER",
     description:
       "EduKita is a platform designed to map educational data openly, providing insights and accessibility to education-related information. Led the design system and user experience strategy.",
-    tags: ["School", "Tracking", "System Design"],
+    tags: ["School", "Tracking", "System Design", "React", "NextJS"],
     image: "/images/edukita.jpeg",
     link: "https://edukita-xi.vercel.app/",
   },
@@ -166,7 +166,7 @@ export const projectDetails: ProjectDetail[] = [
     role: "FRONTEND DEVELOPER",
     description:
       "A professional company profile website for Semesta Data Digital. Focused on high-performance animations and a premium dark-mode aesthetic.",
-    tags: ["Frontend Dev", "Animation", "Next.js"],
+    tags: ["Frontend Dev", "Animation", "Next.js", "React"],
     image: "/images/sdd.jpeg",
     link: "https://web.semesta.vc/",
   },
@@ -175,9 +175,9 @@ export const projectDetails: ProjectDetail[] = [
     type: "Real Project",
     title: "SkyClub",
     period: "2024",
-    role: "FRONTEND DESIGNER",
+    role: "FRONTEND DEVELOPER",
     description: "A comprehensive booking system for sports clubs.",
-    tags: ["Mobile Design", "Booking System", "User Flow"],
+    tags: ["Mobile Design", "Booking System", "User Flow", "Laravel"],
     image: "/images/skyclub.jpeg",
     link: "#",
   },
