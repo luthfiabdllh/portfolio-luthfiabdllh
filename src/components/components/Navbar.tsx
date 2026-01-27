@@ -84,11 +84,11 @@ export default function Navbar() {
           Projects
         </Link>
         <Link
-          href="/sertifications"
+          href="/certifications"
           className="font-light leading-tight hover:font-normal transition-all cursor-pointer"
           aria-label="Works"
         >
-          Sertifications
+          Certifications
         </Link>
         <Link
           href="/about"

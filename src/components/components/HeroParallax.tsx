@@ -19,6 +19,12 @@ export const certifications = [
     link: "https://www.ruangguru.com/rea",
     thumbnail:
       "/document/certifications/RG_AiAutomation.jpeg",
+  },
+  {
+    title: "Mobile App Design in Figma: From Concept to Prototype",
+    link: "https://www.udemy.com/course/mobile-app-design-in-figma-from-concept-to-prototype/",
+    thumbnail:
+      "/document/certifications/Udemy_figmaMobile.jpg",
   }
 ];
 
