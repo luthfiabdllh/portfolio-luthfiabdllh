@@ -51,7 +51,7 @@ export default function HeroSection() {
 
   return (
     <div
-      className="sticky top-0 z-10 flex items-center justify-center w-full h-screen bg-background p-3 sm:p-6"
+      className="sticky top-0 z-0 flex items-center justify-center w-full h-screen bg-background p-3 sm:p-6"
       style={{ overflow: "visible" }}
     >
       {/* Skip waves for reduced motion or low-end devices */}

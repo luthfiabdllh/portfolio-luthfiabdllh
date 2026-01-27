@@ -11,6 +11,7 @@ export default function Home() {
   return (
     <>
       <HeroSection />
+      {/* section main */}
       <main className="rounded-t-3xl relative overflow-hidden z-10 bg-background">
         <div
           className="absolute inset-0 -z-10"

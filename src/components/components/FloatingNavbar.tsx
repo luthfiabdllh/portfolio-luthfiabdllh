@@ -22,8 +22,8 @@ export function FloatingNavbar() {
       ),
     },
     {
-      name: "Sertification",
-      link: "/sertification",
+      name: "Certifications",
+      link: "/certifications",
       icon: (
         <BadgeCheck className="h-4 w-4 text-neutral-500 dark:text-white" />
       ),
