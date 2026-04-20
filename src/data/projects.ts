@@ -52,6 +52,18 @@ export const projects: Project[] = [
 
 export const projectDetails: ProjectDetail[] = [
   {
+    year: "2026 / P03",
+    type: "Real Project",
+    title: "D'Freeze - Pet Clinic",
+    period: "2026",
+    role: "FRONTEND DEVELOPER",
+    description:
+      "A professional landing page for D'Freeze Vet Clinic & Son. Built with Animation, interactive features, and Robust SEO.",
+    tags: ["Animation", "Interactive Features", "SEO", "React", "Astro"],
+    image: "/images/dfreeze.png",
+    link: "https://dfreeze.novarentech.com/",
+  },
+  {
     year: "2026 / P02",
     type: "Real Project",
     title: "Indonesia Nuclear Youth Student",
@@ -83,7 +95,14 @@ export const projectDetails: ProjectDetail[] = [
     role: "FULLSTACK DEVELOPER and AI SPECIALIST",
     description:
       "An AI-powered website for predicting stroke risks with precision.",
-    tags: ["AI Integration", "Machine Learning", "Health Tech", "NestJS", "Flask", "NextJS"],
+    tags: [
+      "AI Integration",
+      "Machine Learning",
+      "Health Tech",
+      "NestJS",
+      "Flask",
+      "NextJS",
+    ],
     image: "/images/neuroguards.png",
     link: "https://neuroguard-indonesia.vercel.app/",
   },
@@ -95,7 +114,13 @@ export const projectDetails: ProjectDetail[] = [
     role: "FULLSTACK DEVELOPER",
     description:
       "An event management platform that simplifies planning and coordination.",
-    tags: ["Event Management", "Real-time Updates", "Attendee Tracking", "Laravel", "NextJS"],
+    tags: [
+      "Event Management",
+      "Real-time Updates",
+      "Attendee Tracking",
+      "Laravel",
+      "NextJS",
+    ],
     image: "/images/eventora.png",
     link: "https://eventoraindonesia.vercel.app/",
   },
@@ -118,7 +143,13 @@ export const projectDetails: ProjectDetail[] = [
     period: "2025",
     role: "FRONTEND DEVELOPER",
     description: "A company profile website for Novarentech software house.",
-    tags: ["Software House", "Company Profile", "Web Development", "React", "NextJS"],
+    tags: [
+      "Software House",
+      "Company Profile",
+      "Web Development",
+      "React",
+      "NextJS",
+    ],
     image: "/images/novaren.png",
     link: "https://novarentech.com/",
   },
@@ -130,7 +161,13 @@ export const projectDetails: ProjectDetail[] = [
     role: "FRONTEND DEVELOPER",
     description:
       "A Customer Relationship Management tool tailored for sales management. Built complex data visualization dashboards and interactive tables.",
-    tags: ["Dashboard", "Whatsapp Integration", "Enterprise", "React", "NextJS"],
+    tags: [
+      "Dashboard",
+      "Whatsapp Integration",
+      "Enterprise",
+      "React",
+      "NextJS",
+    ],
     image: "/images/inviro.png",
     link: "#",
   },
